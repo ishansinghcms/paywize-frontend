@@ -1,0 +1,32 @@
+.nav {
+  background-color: #6c6a6a;
+  padding: 1rem;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  margin: 0;
+  height: 8vh;
+}
+
+.list {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px;
+}
+
+.link:hover {
+  background-color: #000000;
+}
