@@ -1,15 +1,17 @@
 .nav {
   background-color: #6c6a6a;
   padding: 1rem;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   margin: 0;
   height: 8vh;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .list {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -27,6 +29,18 @@
   border-radius: 5px;
 }
 
-.link:hover {
+.link:hover,
+.button:hover {
   background-color: #000000;
+}
+
+.button {
+  border: none;
+  background: none;
+  transition: background-color 0.3s, color 0.3s;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  font-size: 1.2rem;
+  color: #ffffff;
+  border-radius: 5px;
 }
