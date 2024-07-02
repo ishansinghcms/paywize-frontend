@@ -1,4 +1,41 @@
 .container {
   background: #eae7e7;
   height: 92vh;
+  padding: 15vh;
+}
+
+.dashboard_container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 3vh;
+}
+
+.dashboard_container > div {
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.box {
+  padding: 2vh;
+}
+
+.box h3 {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.box p {
+  font-size: 10vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
