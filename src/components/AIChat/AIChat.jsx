@@ -1,13 +1,13 @@
 import Dropdown from "../Dropdown/Dropdown";
 import classes from "./style.module.css";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { BASE_URL } from "../../../constants";
 
 export default function AIChat() {
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(false);
   const [question, setQuestion] = useState("");
-  const [website, selectWebsite] = useState();
+  const [website, setWebsite] = useState("");
   const [options, setOptions] = useState([]);
   const [palceholder, setPlaceholder] = useState(
     "ask questions like what is the radius, circumference, temperature, day length, ..."
@@ -15,7 +15,7 @@ export default function AIChat() {
   const email = localStorage.getItem("user");
   async function fetchChats() {
     try {
-      const response = await fetch(`http://localhost:3000/ai/chats/${email}`);
+      const response = await fetch(`${BASE_URL}/ai/chats/${email}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -27,7 +27,7 @@ export default function AIChat() {
   }
 
   async function fetchWebsites() {
-    const response = await fetch("http://localhost:3000/ai/websites");
+    const response = await fetch(`${BASE_URL}/ai/websites`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -58,7 +58,7 @@ export default function AIChat() {
       return;
     }
     setLoading(true);
-    const response = await fetch("http://localhost:3000/ai/query", {
+    const response = await fetch(`${BASE_URL}/ai/query`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
@@ -71,17 +71,16 @@ export default function AIChat() {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
+    setWebsite("");
     fetchChats();
   }
 
   async function optionSelectHandler(option) {
-    const response = await fetch(
-      `http://localhost:3000/crawler/data/${option.value}`
-    );
+    const response = await fetch(`${BASE_URL}/crawler/data/${option.value}`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    selectWebsite(option);
+    setWebsite(option);
   }
 
   return (

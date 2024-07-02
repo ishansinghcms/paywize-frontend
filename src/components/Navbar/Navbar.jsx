@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { Context } from "../../Context";
-
 import classes from "./style.module.css";
 import LoginRegister from "../LoginRegister/LoginRegister";
+
 export default function Navbar() {
   const { isLoggedIn, setIsLoggedIn } = useContext(Context);
   const checkUser = localStorage.getItem("user");

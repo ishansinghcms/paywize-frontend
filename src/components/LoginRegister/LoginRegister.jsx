@@ -2,6 +2,7 @@ import classes from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Context } from "../../Context";
+import { BASE_URL } from "../../../constants";
 
 export default function LoginRegister() {
   const { isLoggedIn, setIsLoggedIn } = useContext(Context);
@@ -21,7 +22,7 @@ export default function LoginRegister() {
       return;
     }
     try {
-      const response = await fetch("http://localhost:3000/login-register", {
+      const response = await fetch(`${BASE_URL}/login-register`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ email: email }),
