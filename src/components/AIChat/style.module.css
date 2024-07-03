@@ -56,6 +56,18 @@
   font-size: 15px;
 }
 
+.input_element_error {
+  border: none;
+  padding: 12px;
+  width: 130vh;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.input_element_error::placeholder {
+  color: red;
+}
+
 .chat_list {
   list-style-type: none;
   padding: 0;

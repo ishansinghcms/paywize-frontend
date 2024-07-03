@@ -7,9 +7,11 @@ import { BASE_URL } from "../../../constants";
 export default function LoginRegister() {
   const { isLoggedIn, setIsLoggedIn } = useContext(Context);
   const [email, setEmail] = useState("");
+  const [error, setError] = useState(false);
   const [placeHolder, setPlaceHolder] = useState("Enter your email");
   const navigate = useNavigate();
   function emailChangeHandler(event) {
+    setError(false);
     setPlaceHolder("Enter your email");
     setEmail(event.target.value);
   }
@@ -18,9 +20,11 @@ export default function LoginRegister() {
     const isValid = /\S+@\S+\.\S+/.test(email);
     if (email.length === 0 || !isValid) {
       setPlaceHolder("Enter a valid email.");
+      setError(true);
       setEmail("");
       return;
     }
+    setError(false);
     try {
       const response = await fetch(`${BASE_URL}/login-register`, {
         method: "POST",
@@ -48,7 +52,7 @@ export default function LoginRegister() {
           type="email"
           name="email"
           placeholder={placeHolder}
-          className={classes.input}
+          className={!error ? classes.input : classes.input_error}
           value={email}
           onChange={emailChangeHandler}
           required

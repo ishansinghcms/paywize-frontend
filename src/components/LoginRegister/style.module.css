@@ -35,6 +35,19 @@
   font-size: 1rem;
 }
 
+.input_error {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.input_error::placeholder {
+  color: red;
+}
+
 .button {
   padding: 0.8rem;
   background-color: #6c6a6a;

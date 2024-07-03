@@ -9,6 +9,7 @@ export default function AIChat() {
   const [question, setQuestion] = useState("");
   const [website, setWebsite] = useState("");
   const [options, setOptions] = useState([]);
+  const [error, setError] = useState(false);
   const [palceholder, setPlaceholder] = useState(
     "ask questions like what is the radius, circumference, temperature, day length, ..."
   );
@@ -41,6 +42,7 @@ export default function AIChat() {
   }, []);
 
   function emailChangeHandler(event) {
+    setError(false);
     setPlaceholder(
       "ask questions like what is the radius, circumference, temperature, day length, ..."
     );
@@ -51,12 +53,15 @@ export default function AIChat() {
     if (!website) {
       setQuestion("");
       setPlaceholder("Please select a website before asking questions.");
+      setError(true);
       return;
     }
     if (question.length < 1) {
       setPlaceholder("Please enter a valid question.");
+      setError(true);
       return;
     }
+    setError(false);
     setLoading(true);
     const response = await fetch(`${BASE_URL}/ai/query`, {
       method: "POST",
@@ -134,7 +139,9 @@ export default function AIChat() {
         <input
           type="text"
           required
-          className={classes.input_element}
+          className={
+            !error ? classes.input_element : classes.input_element_error
+          }
           value={question}
           onChange={emailChangeHandler}
           placeholder={palceholder}
